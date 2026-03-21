@@ -1,0 +1,8 @@
+node_modules/
+.env
+uploads/covers/
+uploads/pages/
+uploads/sliders/
+*.log
+.DS_Store
+

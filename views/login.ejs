@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <main class="auth-container">
+    <div class="auth-card">
+      <div class="auth-header">
+        <h1>Đăng Nhập</h1>
+        <p>Chào mừng bạn quay trở lại với MangaHay</p>
+      </div>
+
+      <div id="loginError" class="auth-error" style="display: none;">
+        <i class="fas fa-exclamation-circle"></i>
+        <span id="loginErrorMessage"></span>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label for="username">Tên đăng nhập hoặc Email</label>
+          <div class="input-with-icon">
+            <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập hoặc email" required>
+            <i class="fas fa-user"></i>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mật khẩu</label>
+          <div class="input-with-icon">
+            <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
+            <i class="fas fa-lock"></i>
+          </div>
+        </div>
+
+        <button type="submit" class="auth-btn">
+          <i class="fas fa-sign-in-alt"></i> Đăng Nhập
+        </button>
+      </form>
+
+      <div class="auth-links">
+        <p>Chưa có tài khoản? <a href="/register">Đăng ký ngay</a></p>
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script src="/js/main.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorDiv = document.getElementById('loginError');
+      const errorMessage = document.getElementById('loginErrorMessage');
+      const btn = e.target.querySelector('button');
+      const originalBtnContent = btn.innerHTML;
+
+      // Reset error
+      errorDiv.style.display = 'none';
+      
+      // Loading state
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang xử lý...';
+
+      try {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          window.location.href = '/';
+        } else {
+          errorDiv.style.display = 'flex';
+          errorMessage.textContent = data.error || 'Đăng nhập thất bại';
+          btn.disabled = false;
+          btn.innerHTML = originalBtnContent;
+        }
+      } catch (error) {
+        console.error('Login error:', error);
+        errorDiv.style.display = 'flex';
+        errorMessage.textContent = 'Đã xảy ra lỗi. Vui lòng thử lại sau.';
+        btn.disabled = false;
+        btn.innerHTML = originalBtnContent;
+      }
+    });
+  </script>
+</body>
+</html>

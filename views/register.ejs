@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <main class="auth-container">
+    <div class="auth-card">
+      <div class="auth-header">
+        <h1>Đăng Ký</h1>
+        <p>Tạo tài khoản để trải nghiệm đầy đủ tính năng</p>
+      </div>
+
+      <div id="registerError" class="auth-error" style="display: none;">
+        <i class="fas fa-exclamation-circle"></i>
+        <span id="registerErrorMessage"></span>
+      </div>
+
+      <form id="registerForm" class="auth-form">
+        <div class="form-group">
+          <label for="username">Tên đăng nhập</label>
+          <div class="input-with-icon">
+            <input type="text" id="username" name="username" placeholder="Chọn tên đăng nhập (3-30 ký tự)" required minlength="3" maxlength="30">
+            <i class="fas fa-user"></i>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-with-icon">
+            <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email" required>
+            <i class="fas fa-envelope"></i>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mật khẩu</label>
+          <div class="input-with-icon">
+            <input type="password" id="password" name="password" placeholder="Nhập mật khẩu (tối thiểu 6 ký tự)" required minlength="6">
+            <i class="fas fa-lock"></i>
+          </div>
+        </div>
+
+        <button type="submit" class="auth-btn">
+          <i class="fas fa-user-plus"></i> Đăng Ký
+        </button>
+      </form>
+
+      <div class="auth-links">
+        <p>Đã có tài khoản? <a href="/login">Đăng nhập ngay</a></p>
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script src="/js/main.js"></script>
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const errorDiv = document.getElementById('registerError');
+      const errorMessage = document.getElementById('registerErrorMessage');
+      const btn = e.target.querySelector('button');
+      const originalBtnContent = btn.innerHTML;
+
+      // Reset error
+      errorDiv.style.display = 'none';
+      
+      // Loading state
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang xử lý...';
+
+      try {
+        const response = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, email, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          // Auto login after register or redirect to login
+          alert('Đăng ký thành công! Đang chuyển hướng...');
+          window.location.href = '/';
+        } else {
+          errorDiv.style.display = 'flex';
+          // Handle array of errors from express-validator
+          if (data.errors && Array.isArray(data.errors)) {
+            errorMessage.textContent = data.errors.map(err => err.msg).join(', ');
+          } else {
+            errorMessage.textContent = data.error || 'Đăng ký thất bại';
+          }
+          btn.disabled = false;
+          btn.innerHTML = originalBtnContent;
+        }
+      } catch (error) {
+        console.error('Register error:', error);
+        errorDiv.style.display = 'flex';
+        errorMessage.textContent = 'Đã xảy ra lỗi. Vui lòng thử lại sau.';
+        btn.disabled = false;
+        btn.innerHTML = originalBtnContent;
+      }
+    });
+  </script>
+</body>
+</html>

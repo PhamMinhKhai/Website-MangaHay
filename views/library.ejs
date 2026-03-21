@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <main>
+    <div class="container">
+      <h1 class="page-title">Thư Viện Truyện</h1>
+
+      <!-- Search and Filters -->
+      <div class="library-controls">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Tìm theo tên truyện hoặc tác giả...">
+          <button class="search-button" onclick="applyFilters()">
+            <i class="fas fa-search"></i> Tìm Kiếm
+          </button>
+        </div>
+
+        <div class="filters">
+          <select id="genreFilter">
+            <option value="">Tất Cả Thể Loại</option>
+            <option value="Action">Hành Động</option>
+            <option value="Adventure">Phiêu Lưu</option>
+            <option value="Comedy">Hài Hước</option>
+            <option value="Drama">Chính Kịch</option>
+            <option value="Romance">Lãng Mạn</option>
+            <option value="Fantasy">Giả Tưởng</option>
+            <option value="Horror">Kinh Dị</option>
+            <option value="Mystery">Bí Ẩn</option>
+            <option value="Psychological">Tâm Lý</option>
+            <option value="Sci-Fi">Khoa Học Viễn Tưởng</option>
+            <option value="Slice of Life">Đời Thường</option>
+            <option value="Supernatural">Siêu Nhiên</option>
+            <option value="Sports">Thể Thao</option>
+            <option value="Mecha">Mecha</option>
+          </select>
+
+          <select id="statusFilter">
+            <option value="">Tất Cả Trạng Thái</option>
+            <option value="Ongoing">Đang Tiến Hành</option>
+            <option value="Completed">Hoàn Thành</option>
+          </select>
+
+          <select id="sortFilter">
+            <option value="updatedAt">Mới Cập Nhật</option>
+            <option value="title">Tên Truyện (A-Z)</option>
+            <option value="views">Phổ Biến Nhất</option>
+          </select>
+
+          <button class="btn btn-primary" onclick="applyFilters()">Áp Dụng</button>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div id="mangaList" class="manga-grid">
+        <div class="loading">Đang tải...</div>
+      </div>
+
+      <!-- Pagination -->
+      <div id="pagination" class="pagination"></div>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/library.js"></script>
+</body>
+</html>
+

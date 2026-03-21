@@ -1,0 +1,625 @@
+/* Admin Navigation */
+.admin-nav {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.admin-nav-link {
+  padding: 1rem 2rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.admin-nav-link.active,
+.admin-nav-link:hover {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background-color: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 10px var(--shadow);
+  transition: transform 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card i {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.stat-card h3 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* Quick Actions */
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.action-card {
+  background-color: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+.action-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px var(--shadow);
+}
+
+.action-card i {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.action-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.action-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Admin Table */
+.admin-table-container {
+  background-color: var(--bg-secondary);
+  border-radius: 10px;
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table thead {
+  background-color: var(--bg-tertiary);
+}
+
+.admin-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.admin-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+
+
+.table-cover {
+  width: 50px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-buttons .btn {
+  padding: 0.4rem 0.8rem;
+}
+
+/* Admin Forms */
+.admin-form {
+  background-color: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 800px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.genre-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: var(--bg-primary);
+  border-radius: 5px;
+}
+
+.genre-checkboxes label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.genre-checkboxes input[type="checkbox"] {
+  width: auto;
+  cursor: pointer;
+}
+
+/* Image Preview */
+.image-preview {
+  margin-top: 1rem;
+}
+
+.image-preview img {
+  max-width: 200px;
+  max-height: 300px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+.current-cover {
+  margin-bottom: 1rem;
+}
+
+.current-cover img {
+  max-width: 200px;
+  max-height: 300px;
+  border-radius: 5px;
+}
+
+/* Pages Preview */
+.pages-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: var(--bg-primary);
+  border-radius: 5px;
+}
+
+.page-preview-item {
+  position: relative;
+  text-align: center;
+  cursor: move;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: var(--bg-secondary);
+}
+
+.page-preview-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.page-preview-item.dragging {
+  opacity: 0.4;
+  transform: scale(0.9);
+}
+
+.page-preview-item.drag-over {
+  border: 2px dashed var(--primary-color);
+  background-color: var(--hover-bg);
+}
+
+.page-preview-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  pointer-events: none;
+}
+
+.page-preview-item span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.drag-indicator {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: rgba(52, 152, 219, 0.9);
+  color: white;
+  padding: 0.25rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.page-preview-item:hover .drag-indicator {
+  opacity: 1;
+}
+
+/* Upload Progress */
+.upload-progress {
+  margin: 1rem 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 30px;
+  background-color: var(--bg-tertiary);
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  transition: width 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+#progressText {
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Manga Info Card */
+.manga-info-card {
+  background-color: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.manga-info-header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.manga-info-header img {
+  width: 100px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.manga-info-header h2 {
+  margin-bottom: 0.5rem;
+}
+
+.manga-info-header p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+/* Chapters List */
+.chapters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chapter-card {
+  background-color: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.chapter-card:hover {
+  background-color: var(--hover-bg);
+}
+
+.chapter-info h3 {
+  margin-bottom: 0.5rem;
+}
+
+.chapter-info p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.chapter-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Remove Button (for favorites) */
+.remove-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: rgba(231, 76, 60, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.manga-card:hover .remove-btn {
+  opacity: 1;
+}
+
+.remove-btn:hover {
+  background-color: rgba(231, 76, 60, 1);
+}
+
+/* Preferences Form */
+.preferences-form {
+  background-color: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 600px;
+}
+
+/* Continue Reading */
+.continue-chapter,
+.continue-time {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-nav {
+    overflow-x: auto;
+  }
+  
+  .admin-nav-link {
+    white-space: nowrap;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  
+  .stat-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .stat-card i {
+    font-size: 2rem;
+  }
+  
+  .stat-card h3 {
+    font-size: 2rem;
+  }
+  
+  .admin-table-container {
+    padding: 0.5rem;
+  }
+  
+  .admin-table {
+    font-size: 0.85rem;
+  }
+  
+  .admin-table th,
+  .admin-table td {
+    padding: 0.5rem;
+  }
+  
+  .genre-checkboxes {
+    grid-template-columns: 1fr;
+  }
+  
+  .manga-info-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .chapter-card {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .chapter-actions {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Slider Cards */
+.slider-card {
+  background-color: var(--bg-primary);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.slider-card:hover {
+  background-color: var(--hover-bg);
+}
+
+.slider-preview {
+  flex-shrink: 0;
+}
+
+.slider-preview img {
+  width: 300px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.slider-info {
+  flex: 1;
+}
+
+.slider-info h3 {
+  margin-bottom: 0.5rem;
+}
+
+.slider-info p {
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.slider-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+
+.slider-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.badge-success {
+  background-color: var(--success-color);
+}
+
+.badge-inactive {
+  background-color: var(--text-secondary);
+}
+
+/* Responsive slider cards */
+@media (max-width: 768px) {
+  .slider-card {
+    flex-direction: column;
+  }
+  
+  .slider-preview img {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .slider-actions {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Status Badge for Admin */
+.admin-table .status-badge {
+  font-size: 0.75rem;
+}
+
+/* Dark mode specific overrides for admin */
+body[data-theme="dark"] .admin-table thead {
+  background-color: var(--bg-tertiary);
+}
+
+body[data-theme="light"] .admin-table thead {
+  background-color: var(--bg-tertiary);
+}
+
+
+/* ============================================
+   COMMENT MODERATION STYLING
+   Enhanced table styling for comment management
+   ============================================ */
+
+/* Comment Content Cell */
+.comment-content-cell {
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-primary);
+  padding: 1rem !important;
+  transition: all 0.3s ease;
+}
+
+/* Section Info for admin pages */
+.section-info {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-info i {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+/* Enhanced admin table for comments */
+
+
+/* --- LINK TRUYỆN MÀU CAM (MỚI) --- */
+#commentsTable .admin-table td a { 
+    color: #ff9f1c !important; /* Cam */
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+#commentsTable .admin-table td a:hover {
+    color: #ffbe0b !important; /* Vàng cam khi hover */
+    text-shadow: 0 0 10px rgba(255, 159, 28, 0.4);
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/reader.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="reader-body">
+    <!-- Reader Toolbar -->
+    <div class="reader-toolbar" id="readerToolbar">
+      <div class="toolbar-left">
+        <button onclick="goBack()" class="toolbar-btn" title="Quay lại">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <span id="mangaTitle" class="manga-title">Đang tải...</span>
+      </div>
+
+      <div class="toolbar-center">
+        <button onclick="prevPage()" class="toolbar-btn" title="Trang trước">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <span id="pageIndicator">1 / 1</span>
+        <button onclick="nextPage()" class="toolbar-btn" title="Trang sau">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="toolbar-right">
+        <button
+          onclick="downloadChapter()"
+          class="toolbar-btn"
+          title="Tải xuống chapter"
+        >
+          <i class="fas fa-download"></i>
+        </button>
+        <button onclick="toggleSettings()" class="toolbar-btn" title="Cài đặt">
+          <i class="fas fa-cog"></i>
+        </button>
+        <button
+          onclick="toggleFullscreen()"
+          class="toolbar-btn"
+          title="Toàn màn hình"
+        >
+          <i class="fas fa-expand"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+      <h3>Cài Đặt Đọc Truyện</h3>
+
+      <div class="setting-group">
+        <label>Chế Độ Đọc</label>
+        <div class="btn-group">
+          <button
+            class="setting-btn active"
+            data-mode="page-flip"
+            onclick="setReadingMode('page-flip')"
+          >
+            Lật Trang
+          </button>
+          <button
+            class="setting-btn"
+            data-mode="vertical-scroll"
+            onclick="setReadingMode('vertical-scroll')"
+          >
+            Cuộn Dọc
+          </button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label>Hướng Đọc</label>
+        <div class="btn-group">
+          <button
+            class="setting-btn active"
+            data-direction="rtl"
+            onclick="setReadingDirection('rtl')"
+          >
+            Phải sang Trái
+          </button>
+          <button
+            class="setting-btn"
+            data-direction="ltr"
+            onclick="setReadingDirection('ltr')"
+          >
+            Trái sang Phải
+          </button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label>Hiển Thị Trang</label>
+        <div class="btn-group">
+          <button
+            class="setting-btn active"
+            data-display="fit-width"
+            onclick="setPageDisplay('fit-width')"
+          >
+            Vừa Chiều Rộng
+          </button>
+          <button
+            class="setting-btn"
+            data-display="fit-height"
+            onclick="setPageDisplay('fit-height')"
+          >
+            Vừa Chiều Cao
+          </button>
+          <button
+            class="setting-btn"
+            data-display="original"
+            onclick="setPageDisplay('original')"
+          >
+            Kích Thước Gốc
+          </button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label>Màu Nền</label>
+        <div class="btn-group">
+          <button
+            class="setting-btn active"
+            data-bg="black"
+            onclick="setBackground('black')"
+          >
+            Đen
+          </button>
+          <button
+            class="setting-btn"
+            data-bg="white"
+            onclick="setBackground('white')"
+          >
+            Trắng
+          </button>
+          <button
+            class="setting-btn"
+            data-bg="gray"
+            onclick="setBackground('gray')"
+          >
+            Xám
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reader Content -->
+    <div class="reader-container" id="readerContainer">
+      <div id="pageContainer" class="page-container">
+        <div class="loading">Đang tải chapter...</div>
+      </div>
+    </div>
+
+    <!-- Chapter Navigation -->
+    <div class="chapter-nav" id="chapterNav">
+      <button
+        id="prevChapterBtn"
+        onclick="goToPrevChapter()"
+        class="nav-btn"
+        disabled
+      >
+        <i class="fas fa-chevron-left"></i> Chapter Trước
+      </button>
+      <select id="chapterSelect" onchange="changeChapter(this.value)">
+        <option>Đang tải chapters...</option>
+      </select>
+      <button
+        id="nextChapterBtn"
+        onclick="goToNextChapter()"
+        class="nav-btn"
+        disabled
+      >
+        Chapter Sau <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <script>
+      const chapterId = "<%= chapterId %>";
+    </script>
+    <script src="/js/main.js"></script>
+    <script src="/js/reader.js"></script>
+  </body>
+</html>

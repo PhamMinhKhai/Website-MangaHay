@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+
+  <main>
+    <div class="container">
+      <h1 class="page-title">Trang Quản Trị</h1>
+
+      <!-- Admin Navigation -->
+      <div class="admin-nav">
+        <a href="/admin" class="admin-nav-link active">Bảng Điều Khiển</a>
+        <a href="/admin/manga" class="admin-nav-link">Quản Lý Truyện</a>
+        <a href="/admin/users" class="admin-nav-link">Quản Lý Người Dùng</a>
+        <a href="/admin/comments" class="admin-nav-link">Quản Lý Bình Luận</a>
+        <a href="/admin/sliders" class="admin-nav-link">Quản Lý Slider</a>
+      </div>
+
+      <!-- Statistics Cards -->
+      <div id="statsCards" class="stats-grid">
+        <div class="loading">Đang tải thống kê...</div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="section">
+        <h2>Hành Động Nhanh</h2>
+        <div class="quick-actions">
+          <a href="/admin/manga/add" class="action-card">
+            <i class="fas fa-plus-circle"></i>
+            <h3>Thêm Truyện Mới</h3>
+            <p>Thêm một truyện mới vào cơ sở dữ liệu</p>
+          </a>
+          <a href="/admin/manga" class="action-card">
+            <i class="fas fa-edit"></i>
+            <h3>Quản Lý Truyện</h3>
+            <p>Sửa hoặc xóa truyện hiện có</p>
+          </a>
+          <a href="/admin/users" class="action-card">
+            <i class="fas fa-users"></i>
+            <h3>Quản Lý Người Dùng</h3>
+            <p>Xem và quản lý tài khoản người dùng</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/admin/dashboard.js"></script>
+</body>
+</html>
+

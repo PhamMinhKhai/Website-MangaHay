@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+
+  <main>
+    <div class="container">
+      <h1 class="page-title">Thêm Truyện Mới</h1>
+
+      <!-- Admin Navigation -->
+      <div class="admin-nav">
+        <a href="/admin" class="admin-nav-link">Bảng Điều Khiển</a>
+        <a href="/admin/manga" class="admin-nav-link">Quản Lý Truyện</a>
+        <a href="/admin/users" class="admin-nav-link">Quản Lý Người Dùng</a>
+        <a href="/admin/sliders" class="admin-nav-link">Quản Lý Slider</a>
+      </div>
+
+      <form id="addMangaForm" class="admin-form" enctype="multipart/form-data" onsubmit="handleAddManga(event)">
+        <div class="form-group">
+          <label for="title">Tiêu Đề *</label>
+          <input type="text" id="title" name="title" required>
+        </div>
+
+        <div class="form-group">
+          <label for="author">Tác Giả *</label>
+          <input type="text" id="author" name="author" required>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Mô Tả *</label>
+          <textarea id="description" name="description" rows="5" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="cover">Ảnh Bìa *</label>
+          <input type="file" id="cover" name="cover" accept="image/*" required>
+          <div id="coverPreview" class="image-preview"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Thể Loại * (Chọn nhiều)</label>
+          <div class="genre-checkboxes">
+            <label><input type="checkbox" name="genres" value="Action"> Hành Động</label>
+            <label><input type="checkbox" name="genres" value="Adventure"> Phiêu Lưu</label>
+            <label><input type="checkbox" name="genres" value="Comedy"> Hài Hước</label>
+            <label><input type="checkbox" name="genres" value="Drama"> Chính Kịch</label>
+            <label><input type="checkbox" name="genres" value="Romance"> Lãng Mạn</label>
+            <label><input type="checkbox" name="genres" value="Fantasy"> Giả Tưởng</label>
+            <label><input type="checkbox" name="genres" value="Horror"> Kinh Dị</label>
+            <label><input type="checkbox" name="genres" value="Mystery"> Bí Ẩn</label>
+            <label><input type="checkbox" name="genres" value="Psychological"> Tâm Lý</label>
+            <label><input type="checkbox" name="genres" value="Sci-Fi"> Khoa Học Viễn Tưởng</label>
+            <label><input type="checkbox" name="genres" value="Slice of Life"> Đời Thường</label>
+            <label><input type="checkbox" name="genres" value="Supernatural"> Siêu Nhiên</label>
+            <label><input type="checkbox" name="genres" value="Sports"> Thể Thao</label>
+            <label><input type="checkbox" name="genres" value="Mecha"> Mecha</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="status">Trạng Thái *</label>
+          <select id="status" name="status" required>
+            <option value="Ongoing">Đang Tiến Hành</option>
+            <option value="Completed">Hoàn Thành</option>
+          </select>
+        </div>
+
+        <div id="errorMessage" class="error-message"></div>
+        <div id="successMessage" class="success-message"></div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Thêm Truyện</button>
+          <a href="/admin/manga" class="btn btn-secondary">Hủy</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/admin/add-manga.js"></script>
+</body>
+</html>
+

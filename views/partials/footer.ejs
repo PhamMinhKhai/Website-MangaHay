@@ -1,0 +1,42 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>MangaHay</h3>
+        <p>Điểm đến tốt nhất của bạn để đọc truyện tranh trực tuyến với trải nghiệm tuyệt vời.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Liên Kết Nhanh</h3>
+        <ul>
+          <li><a href="/">Trang Chủ</a></li>
+          <li><a href="/library">Thư Viện</a></li>
+          <% if (user) { %>
+            <li><a href="/profile">Hồ Sơ</a></li>
+          <% } %>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Thể Loại</h3>
+        <ul>
+          <li><a href="/library?genre=Action">Hành Động</a></li>
+          <li><a href="/library?genre=Romance">Lãng Mạn</a></li>
+          <li><a href="/library?genre=Fantasy">Giả Tưởng</a></li>
+          <li><a href="/library?genre=Comedy">Hài Hước</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Pháp Lý</h3>
+        <ul>
+          <li><a href="#">Giới Thiệu</a></li>
+          <li><a href="#">Điều Khoản Dịch Vụ</a></li>
+          <li><a href="#">Chính Sách Bảo Mật</a></li>
+          <li><a href="#">Liên Hệ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 MangaHay. Bảo lưu mọi quyền.</p>
+    </div>
+  </div>
+</footer>
+

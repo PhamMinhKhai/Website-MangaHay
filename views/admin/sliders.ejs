@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/admin.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+
+    <main>
+      <div class="container">
+        <h1 class="page-title">Quản Lý Slider</h1>
+
+        <!-- Admin Navigation -->
+        <div class="admin-nav">
+          <a href="/admin" class="admin-nav-link">Bảng Điều Khiển</a>
+          <a href="/admin/manga" class="admin-nav-link">Quản Lý Truyện</a>
+          <a href="/admin/users" class="admin-nav-link">Quản Lý Người Dùng</a>
+          <a href="/admin/comments" class="admin-nav-link">Quản Lý Bình Luận</a>
+          <a href="/admin/sliders" class="admin-nav-link active"
+            >Quản Lý Slider</a
+          >
+        </div>
+
+        <!-- Add Slider Form -->
+        <div class="section">
+          <h2>Thêm Slider Mới</h2>
+          <form
+            id="addSliderForm"
+            class="admin-form"
+            onsubmit="handleAddSlider(event)"
+          >
+            <div class="form-row">
+              <div class="form-group">
+                <label for="title">Tiêu Đề *</label>
+                <input type="text" id="title" name="title" required />
+              </div>
+
+              <div class="form-group">
+                <label for="order">Thứ Tự Hiển Thị</label>
+                <input
+                  type="number"
+                  id="order"
+                  name="order"
+                  value="0"
+                  min="0"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="description">Mô Tả</label>
+              <textarea id="description" name="description" rows="2"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="image">Ảnh Slider * (Khuyến nghị: 1920x500px)</label>
+              <input
+                type="file"
+                id="image"
+                name="image"
+                accept="image/*"
+                required
+              />
+              <div id="imagePreview" class="image-preview"></div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="linkUrl"
+                  >URL Liên Kết (Tùy chọn - ví dụ: /manga/123)</label
+                >
+                <input
+                  type="text"
+                  id="linkUrl"
+                  name="linkUrl"
+                  placeholder="/manga/123"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="linkText">Văn Bản Nút Liên Kết</label>
+                <input
+                  type="text"
+                  id="linkText"
+                  name="linkText"
+                  value="Đọc Ngay"
+                />
+              </div>
+            </div>
+
+            <div id="errorMessage" class="error-message"></div>
+            <div id="successMessage" class="success-message"></div>
+
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-plus"></i> Thêm Slider
+            </button>
+          </form>
+        </div>
+
+        <!-- Sliders List -->
+        <div class="section">
+          <h2>Slider Hiện Có</h2>
+          <div id="slidersList">
+            <div class="loading">Đang tải slider...</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/admin/sliders.js"></script>
+  </body>
+</html>

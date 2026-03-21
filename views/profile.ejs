@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <main>
+    <div class="container">
+      <h1 class="page-title">Hồ Sơ Của Tôi</h1>
+
+      <!-- Profile Tabs -->
+      <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('info')">Thông Tin</button>
+        <button class="tab-btn" onclick="showTab('favorites')">Yêu Thích</button>
+        <button class="tab-btn" onclick="showTab('history')">Lịch Sử Đọc</button>
+        <button class="tab-btn" onclick="showTab('password')">Đổi Mật Khẩu</button>
+      </div>
+
+      <!-- Profile Info Tab -->
+      <div id="infoTab" class="tab-content active">
+        <div class="profile-info">
+          <div id="userInfo" class="card">
+            <div class="loading">Đang tải...</div>
+          </div>
+          <button class="btn btn-danger" onclick="deleteAccount()">Xóa Tài Khoản</button>
+        </div>
+      </div>
+
+      <!-- Favorites Tab -->
+      <div id="favoritesTab" class="tab-content">
+        <div id="favoritesList" class="manga-grid">
+          <div class="loading">Đang tải...</div>
+        </div>
+      </div>
+
+      <!-- Reading History Tab -->
+      <div id="historyTab" class="tab-content">
+        <div id="historyList" class="updates-list">
+          <div class="loading">Đang tải...</div>
+        </div>
+      </div>
+
+      <!-- Change Password Tab -->
+      <div id="passwordTab" class="tab-content">
+        <form id="changePasswordForm" class="password-form card" onsubmit="changePassword(event)">
+          <h2>Đổi Mật Khẩu</h2>
+          
+          <div class="form-group">
+            <label for="currentPassword">Mật khẩu hiện tại *</label>
+            <input type="password" id="currentPassword" name="currentPassword" required minlength="6">
+          </div>
+
+          <div class="form-group">
+            <label for="newPassword">Mật khẩu mới *</label>
+            <input type="password" id="newPassword" name="newPassword" required minlength="6">
+            <small>Phải có ít nhất 6 ký tự</small>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Xác nhận mật khẩu mới *</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required minlength="6">
+          </div>
+
+          <div id="passwordError" class="error-message"></div>
+          <div id="passwordSuccess" class="success-message"></div>
+
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-key"></i> Đổi Mật Khẩu
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/profile.js"></script>
+</body>
+</html>
+

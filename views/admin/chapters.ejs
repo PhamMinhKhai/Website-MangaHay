@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+
+  <main>
+    <div class="container">
+      <h1 class="page-title">Quản Lý Chapter</h1>
+
+      <!-- Admin Navigation -->
+      <div class="admin-nav">
+        <a href="/admin" class="admin-nav-link">Bảng Điều Khiển</a>
+        <a href="/admin/manga" class="admin-nav-link">Quản Lý Truyện</a>
+        <a href="/admin/users" class="admin-nav-link">Quản Lý Người Dùng</a>
+        <a href="/admin/sliders" class="admin-nav-link">Quản Lý Slider</a>
+      </div>
+
+      <div id="mangaInfo" class="manga-info-card">
+        <div class="loading">Đang tải...</div>
+      </div>
+
+      <!-- Add Chapter Form -->
+      <div class="section">
+        <h2>Thêm Chapter Mới</h2>
+        <form id="addChapterForm" class="admin-form" enctype="multipart/form-data" onsubmit="handleAddChapter(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="chapterNumber">Số Chapter *</label>
+              <input type="number" id="chapterNumber" name="chapterNumber" step="0.1" min="0" required>
+            </div>
+
+            <div class="form-group">
+              <label for="chapterTitle">Tiêu Đề Chapter (Tùy chọn)</label>
+              <input type="text" id="chapterTitle" name="title">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="pages">Trang Chapter * (Chọn nhiều ảnh)</label>
+            <input type="file" id="pages" name="pages" accept="image/*" multiple required>
+            <div id="pagesPreview" class="pages-preview"></div>
+          </div>
+
+          <div id="uploadProgress" class="upload-progress" style="display: none;">
+            <div class="progress-bar">
+              <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <span id="progressText">Đang tải lên...</span>
+          </div>
+
+          <div id="errorMessage" class="error-message"></div>
+          <div id="successMessage" class="success-message"></div>
+
+          <button type="submit" class="btn btn-primary">Thêm Chapter</button>
+        </form>
+      </div>
+
+      <!-- Chapters List -->
+      <div class="section">
+        <h2>Chapter Hiện Có</h2>
+        <div id="chaptersList" class="chapters-list">
+          <div class="loading">Đang tải chapter...</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+
+  <script>
+    const mangaId = '<%= mangaId %>';
+  </script>
+  <script src="/js/main.js"></script>
+  <script src="/js/admin/chapters.js"></script>
+</body>
+</html>
+

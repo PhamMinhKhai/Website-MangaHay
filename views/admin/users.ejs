@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+
+  <main>
+    <div class="container">
+      <h1 class="page-title">Quản Lý Người Dùng</h1>
+
+      <!-- Admin Navigation -->
+      <div class="admin-nav">
+        <a href="/admin" class="admin-nav-link">Bảng Điều Khiển</a>
+        <a href="/admin/manga" class="admin-nav-link">Quản Lý Truyện</a>
+        <a href="/admin/users" class="admin-nav-link active">Quản Lý Người Dùng</a>
+        <a href="/admin/comments" class="admin-nav-link">Quản Lý Bình Luận</a>
+        <a href="/admin/sliders" class="admin-nav-link">Quản Lý Slider</a>
+      </div>
+
+      <!-- Users List -->
+      <div id="usersList" class="admin-table-container">
+        <div class="loading">Đang tải người dùng...</div>
+      </div>
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/admin/users.js"></script>
+</body>
+</html>
+

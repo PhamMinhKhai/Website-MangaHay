@@ -1,0 +1,35 @@
+<nav class="navbar">
+  <div class="container">
+    <a href="/" class="logo">
+      <i class="fas fa-book-open"></i>
+      MangaHay
+    </a>
+    
+    <div class="navbar-search">
+      <input type="text" id="navSearchInput" placeholder="Tìm kiếm truyện..." onkeypress="if(event.key==='Enter') searchManga()">
+      <button onclick="searchManga()" class="search-btn">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+    
+    <ul class="nav-links">
+      <li><a href="/">Trang Chủ</a></li>
+      <li><a href="/library">Thư Viện</a></li>
+      <% if (user) { %>
+        <li><a href="/profile">Hồ Sơ</a></li>
+        <% if (user.isAdmin) { %>
+          <li><a href="/admin">Quản Trị</a></li>
+        <% } %>
+        <li><a href="#" onclick="logout(); return false;">Đăng Xuất</a></li>
+      <% } else { %>
+        <li><a href="/login">Đăng Nhập</a></li>
+        <li><a href="/register">Đăng Ký</a></li>
+      <% } %>
+    </ul>
+    
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <i class="fas fa-moon"></i>
+    </button>
+  </div>
+</nav>
+

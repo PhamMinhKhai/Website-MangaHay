@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/slider.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+
+  <main>
+    <!-- Image Slider Section -->
+    <section class="slider-section">
+      <div class="slider-container">
+        <div id="mainSlider" class="main-slider">
+          <div class="slider-loading">
+            <i class="fas fa-spinner fa-spin"></i> Đang tải...
+          </div>
+        </div>
+        <button class="slider-btn prev-btn" onclick="prevSlide()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="slider-btn next-btn" onclick="nextSlide()">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="slider-dots" id="sliderDots"></div>
+      </div>
+    </section>
+
+    <!-- Featured Manga -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Truyện Nổi Bật</h2>
+        <div id="featuredManga" class="manga-grid">
+          <div class="loading">Đang tải...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Updates -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Cập Nhật Mới Nhất</h2>
+        <div id="latestUpdates" class="updates-list">
+          <div class="loading">Đang tải...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Continue Reading (if logged in) -->
+    <% if (user) { %>
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Tiếp Tục Đọc</h2>
+        <div id="continueReading" class="manga-grid">
+          <div class="loading">Đang tải...</div>
+        </div>
+      </div>
+    </section>
+    <% } %>
+
+    <!-- Genres Quick Access -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Duyệt Theo Thể Loại</h2>
+        <div class="genre-tags">
+          <a href="/library?genre=Action" class="genre-tag">Hành Động</a>
+          <a href="/library?genre=Adventure" class="genre-tag">Phiêu Lưu</a>
+          <a href="/library?genre=Comedy" class="genre-tag">Hài Hước</a>
+          <a href="/library?genre=Drama" class="genre-tag">Chính Kịch</a>
+          <a href="/library?genre=Romance" class="genre-tag">Lãng Mạn</a>
+          <a href="/library?genre=Fantasy" class="genre-tag">Giả Tưởng</a>
+          <a href="/library?genre=Horror" class="genre-tag">Kinh Dị</a>
+          <a href="/library?genre=Mystery" class="genre-tag">Bí Ẩn</a>
+          <a href="/library?genre=Psychological" class="genre-tag">Tâm Lý</a>
+          <a href="/library?genre=Sci-Fi" class="genre-tag">Khoa Học Viễn Tưởng</a>
+          <a href="/library?genre=Slice of Life" class="genre-tag">Đời Thường</a>
+          <a href="/library?genre=Supernatural" class="genre-tag">Siêu Nhiên</a>
+          <a href="/library?genre=Sports" class="genre-tag">Thể Thao</a>
+          <a href="/library?genre=Mecha" class="genre-tag">Mecha</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/slider.js"></script>
+  <script src="/js/home.js"></script>
+</body>
+</html>
+
