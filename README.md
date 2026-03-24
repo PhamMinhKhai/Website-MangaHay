@@ -1,7 +1,5 @@
 <p align="center">
-  <h1 align="center">MangaHay
-    https://mangahay-zue3.onrender.com
-  </h1>
+  <h1 align="center">MangaHay</h1>
   <p align="center">
     <em>Nền tảng đọc truyện tranh trực tuyến được xây dựng với Node.js</em>
   </p>
@@ -16,8 +14,7 @@
 
 ---
 
-## Giới Thiệu
-
+## Giới Thiệu: https://mangahay-zue3.onrender.com
 **MangaHay** là một website đọc truyện tranh (manga) full-stack, hỗ trợ cả giao diện web và API cho ứng dụng mobile. Người dùng có thể duyệt thư viện truyện, đọc truyện online với trình đọc chuyên dụng, bình luận, lưu truyện yêu thích, và tải chapter về máy. Quản trị viên có bảng điều khiển riêng để quản lý toàn bộ nội dung.
 
 ---
